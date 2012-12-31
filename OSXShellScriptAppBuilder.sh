@@ -5,6 +5,20 @@
 # 引数に作成したいアプリケーションのスクリプトを指定します。
 # bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/OSXShellScriptAppBuilder.sh) "[script url]"
 
+cat <<__EOF__
+
+----------------------------------------------------------------
+OSX Shell Script Application Builder
+----------------------------------------------------------------
+editor:
+	mattintosh4
+
+more info:
+	https://github.com/mattintosh4/OSXShellScriptAppBuilder
+----------------------------------------------------------------
+
+__EOF__
+
 if ! [ `echo "$1" | grep "^http"` ]; then
 	echo "/!\ 引数がありません。引数にスクリプトの URL を指定して下さい。"
 	exit
