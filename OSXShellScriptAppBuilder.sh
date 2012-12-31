@@ -68,7 +68,7 @@ __EOF__
 mv $FILE "$MACOS"/script
 chmod +x "$MACOS"/script
 
-echo "=> ファイルをチェックします。"
+echo "=> ファイルをチェックしています。"
 for f in "$CONTENTS"/Info.plist "$MACOS"/script
 do
 	echo -n "$f"...
