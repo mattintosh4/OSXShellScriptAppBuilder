@@ -8,8 +8,8 @@ cat > $FILE <<__EOF__
 #!/bin/bash
 
 case `defaults read $PREF $PROP` in
-	0) defaults write $PREF $PROP -bool ON;;
-	1) defautls write $PREF $PROP -bool OFF;;
+	0) defaults write $PREF $PROP -bool TRUE;;
+	1) defautls write $PREF $PROP -bool FALSE;;
 esac
 echo "Finder を再起動します。よろしければ Enter を押して下さい。"
 read
