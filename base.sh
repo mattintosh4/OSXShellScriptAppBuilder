@@ -44,12 +44,8 @@ cat > "$CONTENTS"/Info.plist <<__EOF__
 	<string>$NAME</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>APPL</string>
-	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
 </dict>
 </plist>
 __EOF__
