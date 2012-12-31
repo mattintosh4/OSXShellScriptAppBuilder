@@ -11,16 +11,12 @@ if [ -z "$1" -o ! "`echo "$1" | grep "^http"`" ]; then
 fi
 
 echo "=> スクリプトファイルをダウンロードしています。"
-curl -o ${FILE:=/tmp/tmp_$$} "$1" && {
-	NAME=`awk 'NR==2' $FILE | cut -d' ' -f2-`
-	APP="$NAME".app
-	CONTENTS="$APP"/Contents
-	RESOURCES="$CONTENTS"/Resources
-	MACOS="$CONTENTS"/MacOS
-} || {
-	echo "スクリプトのダウンロードに失敗しました。処理を中止します。"
-	exit
-}
+curl -o ${FILE:=/tmp/tmp_$$} "$1"
+NAME=`awk 'NR==2' $FILE | cut -d' ' -f2-`
+APP="$NAME".app
+CONTENTS="$APP"/Contents
+RESOURCES="$CONTENTS"/Resources
+MACOS="$CONTENTS"/MacOS
 
 [ -e "$APP" ] \
 	&& echo "/!\ 同一名のアプリケーションが存在します。スクリプトを実行する前に削除して下さい。" \
