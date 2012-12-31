@@ -57,8 +57,10 @@ chmod +x "$MACOS"/script
 echo "=> ファイルをチェックします。"
 for f in "$CONTENTS"/Info.plist "$MACOS"/script
 do
-    echo -n "$f"...
-    test -f "$f" && echo "OK" || echo "MISS"
+	echo -n "$f"...
+	test -f "$f" \
+		&& echo "OK" \
+		|| echo "MISS"
 done
 
 echo "=> アプリケーション \"$APP\" が作成されました。"
