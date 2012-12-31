@@ -71,11 +71,11 @@ chmod +x "$MACOS"/script
 echo "=> ファイルをチェックしています。"
 for f in "$CONTENTS"/Info.plist "$MACOS"/script
 do
-	echo -n "$f"...
+	echo -n "$f ... "
 	if [ -f "$f" ]; then
-		echo "OK"
+		echo "found"
 	else
-		echo "MISS"
+		echo "not found"
 	fi
 done
 
