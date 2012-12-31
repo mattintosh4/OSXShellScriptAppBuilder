@@ -12,7 +12,8 @@ fi
 
 echo "=> スクリプトファイルをダウンロードしています。"
 curl -o ${FILE:=/tmp/tmp_$$} "$1" && {
-	NAME="`awk 'NR==2' $FILE | cut -d' ' -f2-`"
+	NAME="`awk 'NR==2' $FILE`"
+	NAME="${NAME#* }"
 	APP="$NAME".app
 	CONTENTS="$APP"/Contents
 	RESOURCES="$CONTENTS"/Resources
