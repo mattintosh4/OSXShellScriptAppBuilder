@@ -18,10 +18,7 @@ more info:
 
 __EOF__
 
-[ -z "$1" ] && echo "モジュール名がありません" && exit
-
 MODULE_PATH="https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/modules"
-
 case "$1" in
 	wine-explorer)
 		MODULE="$MODULE_PATH/wine-explorer.sh";;
