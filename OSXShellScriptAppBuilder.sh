@@ -2,8 +2,8 @@
 #
 # OSXShellScriptAppBuilder (C) 2012 mattintosh4
 #
-# 引数に作成したいアプリケーションのスクリプトを指定します。
-# bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/OSXShellScriptAppBuilder.sh) "[script url]"
+# Usage:
+#   bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/OSXShellScriptAppBuilder.sh) "module-name"
 
 cat <<__EOF__
 
@@ -18,13 +18,22 @@ more info:
 
 __EOF__
 
-if ! [ `echo "$1" | grep "^http"` ]; then
-	echo "/!\ 引数がありません。引数にスクリプトの URL を指定して下さい。"
-	exit
-fi
+[ -z "$1" ] && echo "モジュール名がありません" && exit
 
-echo "=> スクリプトファイルをダウンロードしています。"
-if ! curl -o ${FILE:=/tmp/tmp_$$} "$1"; then
+MODULE_PATH="https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/modules"
+
+case "$1" in
+	wine-explorer)
+		MODULE="$MODULE_PATH/wine-explorer.sh";;
+	macports-active-list-backup)
+		MODULE="$MODULE_PATH/macports-active-list-backup.sh";;
+	dot-file-switcher)
+		MODULE="$MODULE_PATH/dot-file-switcher";;
+esac
+
+
+echo "=> モジュールをダウンロードしています。"
+if ! curl -o ${FILE:=/tmp/tmp_$$} "$MODULE"; then
 	echo "スクリプトのダウンロードに失敗しました。処理を中止します。"
 	exit
 fi
