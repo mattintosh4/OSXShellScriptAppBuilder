@@ -2,15 +2,12 @@
 # Dot File Switcher
 
 FILE=/tmp/tmp_$$
-PREF="com.apple.finder"
-PROP="AppleShowAllFiles"
 cat > $FILE <<__EOF__
 #!/bin/bash
 
-case `defaults read $PREF $PROP` in
-	0) defaults write $PREF $PROP -bool TRUE;;
-	1) defaults write $PREF $PROP -bool FALSE;;
-esac
+(( `defaults read com.apple.finder AppleShowAllFiles` == 0 )) \
+	&& defaults write com.apple.finder AppleShowAllFiles -bool TRUE \
+	|| defaults write com.apple.finder AppleShowAllFiles -bool FALSE
 echo "Finder を再起動します。よろしければ Enter を押して下さい。"
 read
 killall Finder
