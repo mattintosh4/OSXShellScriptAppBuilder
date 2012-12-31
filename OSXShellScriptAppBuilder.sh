@@ -29,8 +29,8 @@ case "$1" in
 		MODULE="$MODULE_PATH/macports-active-list-backup.sh";;
 	dot-file-switcher)
 		MODULE="$MODULE_PATH/dot-file-switcher";;
+	*) echo "モジュールが見つかりませんでした"; exit;;
 esac
-
 
 echo "=> モジュールをダウンロードしています。"
 if ! curl -o ${FILE:=/tmp/tmp_$$} "$MODULE"; then
