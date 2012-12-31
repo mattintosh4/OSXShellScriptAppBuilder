@@ -25,7 +25,7 @@ case "$1" in
 	macports-active-list-backup)
 		MODULE="$MODULE_PATH/macports-active-list-backup.sh";;
 	dot-file-switcher)
-		MODULE="$MODULE_PATH/dot-file-switcher";;
+		MODULE="$MODULE_PATH/dot-file-switcher.sh";;
 	*) echo "モジュールが見つかりませんでした"; exit;;
 esac
 
