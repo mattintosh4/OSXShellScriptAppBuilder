@@ -7,15 +7,14 @@
 
 cat <<__EOF__
 
-----------------------------------------------------------------
-OSX Shell Script Application Builder
-----------------------------------------------------------------
+================================================================
+              OSX Shell Script Application Builder
+================================================================
 editor:
-	mattintosh4
+    mattintosh4
 
 more info:
-	https://github.com/mattintosh4/OSXShellScriptAppBuilder
-----------------------------------------------------------------
+    https://github.com/mattintosh4/OSXShellScriptAppBuilder
 
 __EOF__
 
