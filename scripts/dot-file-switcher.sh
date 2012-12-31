@@ -9,7 +9,7 @@ cat > $FILE <<__EOF__
 
 case `defaults read $PREF $PROP` in
 	0) defaults write $PREF $PROP -bool TRUE;;
-	1) defautls write $PREF $PROP -bool FALSE;;
+	1) defaults write $PREF $PROP -bool FALSE;;
 esac
 echo "Finder を再起動します。よろしければ Enter を押して下さい。"
 read
