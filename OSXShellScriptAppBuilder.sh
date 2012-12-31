@@ -3,32 +3,33 @@
 # OSXShellScriptAppBuilder (C) 2012 mattintosh4
 #
 # 引数に作成したいアプリケーションのスクリプトを指定します。
-# bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/generator.sh) "[script url]"
+# bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/OSXShellScriptAppBuilder.sh) "[script url]"
 
-echo "$1" | grep "^http" || {
-	echo "/!\ 引数がありません。スクリプトの URL を指定して下さい。"
+if ! [ `echo "$1" | grep "^http"` ]; then
+	echo "/!\ 引数がありません。引数にスクリプトの URL を指定して下さい。"
 	exit
-}
+fi
 
 echo "=> スクリプトファイルをダウンロードしています。"
-curl -o ${FILE:=/tmp/tmp_$$} "$1" && {
-	NAME="`awk 'NR==2' $FILE`"
-	NAME="${NAME#* }"
-	APP="$NAME".app
-	CONTENTS="$APP"/Contents
-	RESOURCES="$CONTENTS"/Resources
-	MACOS="$CONTENTS"/MacOS
-} || {
+if ! curl -o ${FILE:=/tmp/tmp_$$} "$1"; then
 	echo "スクリプトのダウンロードに失敗しました。処理を中止します。"
 	exit
-}
+fi
 
-[ -e "$APP" ] \
-	&& echo "/!\ 同一名のアプリケーションが存在します。スクリプトを実行する前に削除して下さい。" \
-	&& exit \
-	|| echo "=> アプリケーション \"$APP\" を作成します。"
+NAME="`awk 'NR==2' $FILE`"
+NAME="${NAME#* }"
+APP="$NAME".app
+CONTENTS="$APP"/Contents
+RESOURCES="$CONTENTS"/Resources
+MACOS="$CONTENTS"/MacOS
 
-mkdir -p "$MACOS"
+if [ -e "$APP" ]; then
+	echo "/!\ 同一名のアプリケーションが存在します。スクリプトを実行する前に削除して下さい。" \
+	exit
+fi
+
+echo "=> アプリケーション \"$APP\" の作成を開始します。"
+mkdir -pv "$MACOS"
 
 cat > "$CONTENTS"/Info.plist <<__EOF__
 <?xml version="1.0" encoding="UTF-8"?>
@@ -58,9 +59,11 @@ echo "=> ファイルをチェックします。"
 for f in "$CONTENTS"/Info.plist "$MACOS"/script
 do
 	echo -n "$f"...
-	test -f "$f" \
-		&& echo "OK" \
-		|| echo "MISS"
+	if [ -f "$f" ]; then
+		echo "OK"
+	else
+		echo "MISS"
+	fi
 done
 
-echo "=> アプリケーション \"$APP\" が作成されました。"
+echo "=> アプリケーション \"$APP\" の作成が完了しました。"
