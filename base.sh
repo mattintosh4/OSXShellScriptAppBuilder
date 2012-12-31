@@ -5,10 +5,10 @@
 # 引数に作成したいアプリケーションのスクリプトを指定します。
 # bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/base.sh) "https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/scripts/scriptname.sh"
 
-[ -z "$1" ] && [ "`echo "$1" | grep "^http"`" ] && {
+if [ -z "$1" -o ! "`echo "$1" | grep "^http"`" ]; then
 	echo "/!\ 引数がありません。スクリプトの URL を指定して下さい。"
 	exit
-}
+fi
 
 echo "=> スクリプトファイルをダウンロードしています。"
 curl -o ${FILE:=/tmp/tmp_$$} "$1" && {
