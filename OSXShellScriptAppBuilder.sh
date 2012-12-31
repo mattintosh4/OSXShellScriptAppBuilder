@@ -73,9 +73,9 @@ for f in "$CONTENTS"/Info.plist "$MACOS"/script
 do
 	echo -n "$f ... "
 	if [ -f "$f" ]; then
-		echo "found"
+		echo "OK"
 	else
-		echo "not found"
+		echo "Not found"
 	fi
 done
 
