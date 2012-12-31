@@ -10,7 +10,7 @@ cat <<__EOF__
 ================================================================
               OSX Shell Script Application Builder
 ================================================================
-editor:
+author:
     mattintosh4
 
 more info:
