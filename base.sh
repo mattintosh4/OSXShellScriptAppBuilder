@@ -17,7 +17,10 @@ curl -o ${FILE:=/tmp/tmp_$$} "$1" && {
 	CONTENTS="$APP"/Contents
 	RESOURCES="$CONTENTS"/Resources
 	MACOS="$CONTENTS"/MacOS
-} || echo "スクリプトのダウンロードに失敗しました。処理を中止します。" && exit
+} || {
+	echo "スクリプトのダウンロードに失敗しました。処理を中止します。"
+	exit
+}
 
 [ -e "$APP" ] \
 	&& echo "/!\ 同一名のアプリケーションが存在します。スクリプトを実行する前に削除して下さい。" \
