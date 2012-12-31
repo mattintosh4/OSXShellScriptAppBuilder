@@ -3,12 +3,12 @@
 # OSXShellScriptAppBuilder (C) 2012 mattintosh4
 #
 # 引数に作成したいアプリケーションのスクリプトを指定します。
-# bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/base.sh) "https://github.com/mattintosh4/scriptname.sh"
+# bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/base.sh) "https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/scripts/scriptname.sh"
 
-if [ -z "$1" ]; then
+[ -z "$1" ] && [ "`echo "$1" | grep "^http"`" ] && {
 	echo "/!\ 引数がありません。スクリプトの URL を指定して下さい。"
 	exit
-fi
+}
 
 echo "=> スクリプトファイルをダウンロードしています。"
 curl -o ${FILE:=/tmp/tmp_$$} "$1" && {
@@ -67,4 +67,3 @@ do
 done
 
 echo "=> アプリケーション \"$APP\" が作成されました。"
-
