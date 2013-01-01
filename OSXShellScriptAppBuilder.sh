@@ -15,10 +15,10 @@ more info:
 __EOF__
 
 echo "=> モジュールセットをダウンロードしています。"
-MODULE=/tmp/tmp_$$
-bash <(curl --progress-bar https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" $MODULE
+MODULE_FILE=/tmp/tmp_$$
+bash <(curl --progress-bar https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" $MODULE_FILE
 
-APP_NAME="`awk 'NR==2' $MODULE`"
+APP_NAME="`awk 'NR==2' $MODULE_FILE`"
 APP_NAME="${APP_NAME#* }"
 
 APP="$APP_NAME".app
@@ -55,7 +55,7 @@ cat > "$CONTENTS"/Info.plist <<__EOF__
 </plist>
 __EOF__
 
-mv $MODULE "$MACOS"/script && chmod +x "$_"
+mv $MODULE_FILE "$MACOS"/script && chmod +x "$_"
 
 echo "=> ファイルをチェックしています。"
 for f in "$CONTENTS"/Info.plist "$MACOS"/script
