@@ -15,9 +15,16 @@ more info:
 __EOF__
 
 echo "=> モジュールをダウンロードしています。"
-MODULE_LOCALE="https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/modules/$1.sh"
+DL_MODULE(){
+	curl \
+		--progress-bar \
+		-o ${MODULE_FILE:=/tmp/tmp_$$} \
+		https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/modules/$1.sh
+}
+
+MODULE_LOCALE=""
 echo $MODULE_LOCALE
-if ! curl --progress-bar -o ${MODULE_FILE:=/tmp/tmp_$$} "$MODULE_LOCALE"; then
+if ! DL_MODULE; then
 	echo "モジュールのダウンロードに失敗しました。モジュール名が正しいか確認して下さい。処理を中止します。"
 	exit
 fi
