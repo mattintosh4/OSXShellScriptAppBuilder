@@ -18,16 +18,9 @@ more info:
 
 __EOF__
 
-MODULE_PATH="https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/modules"
-case "$1" in
-	wine-explorer)
-		MODULE="$MODULE_PATH/wine-explorer.sh";;
-	macports-active-list-backup)
-		MODULE="$MODULE_PATH/macports-active-list-backup.sh";;
-	dot-file-switcher)
-		MODULE="$MODULE_PATH/dot-file-switcher.sh";;
-	*) echo "モジュールが見つかりませんでした"; exit;;
-esac
+echo "=> モジュールセットをダウンロードしています。"
+. <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset)
+
 
 echo "=> モジュールをダウンロードしています。"
 if ! curl -o ${FILE:=/tmp/tmp_$$} "$MODULE"; then
