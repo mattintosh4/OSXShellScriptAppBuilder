@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/bash --login
 # MacPorts Active List Backup
 
-f=/tmp/macports-installed_`date +%Y-%m-%d`.txt
-awk 'NR >= 2 { sub(/^[^+]+/, "", $2); print $1, $2 }' <(/opt/local/bin/port installed active) > $f
-open $f
+FILE=/tmp/macports-active-list_`date +%Y-%m-%d`.txt
+port installed active | awk 'NR >= 2 { sub(/^[^+]+/, "", $2); print $1, $2 }' > $FILE
+open $FILE
