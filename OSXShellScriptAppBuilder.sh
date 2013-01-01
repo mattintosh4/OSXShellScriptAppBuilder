@@ -35,7 +35,7 @@ RESOURCES="$CONTENTS"/Resources
 MACOS="$CONTENTS"/MacOS
 
 if [ -e "$APP" ]; then
-	echo "/!\ 同一名のアプリケーションが存在します。スクリプトを実行する前に削除して下さい。"
+	echo "/!\ 同一名のアプリケーションが存在します。削除してから再度実行して下さい。"
 	exit
 fi
 
