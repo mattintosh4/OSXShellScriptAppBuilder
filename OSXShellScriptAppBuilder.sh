@@ -16,7 +16,7 @@ __EOF__
 
 echo "=> モジュールセットをダウンロードしています。"
 MODULE=/tmp/tmp_$$
-bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" $MODULE
+bash <(curl --progress-bar https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" $MODULE
 
 APP_NAME="`awk 'NR==2' $MODULE`"
 APP_NAME="${APP_NAME#* }"
