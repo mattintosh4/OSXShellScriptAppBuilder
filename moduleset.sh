@@ -5,4 +5,8 @@ case "$1" in
 	"dot-file-switcher"				) MODULE_PATH="$MODULE_PATH/dot-file-switcher.sh";;
 	*								) echo "モジュールが見つかりませんでした"; exit;;
 esac
-export MODULE_PATH
+echo "=> モジュールをダウンロードしています。"
+if ! curl -o "$2" "$MODULE_PATH"; then
+	echo "スクリプトのダウンロードに失敗しました。処理を中止します。"
+	exit
+fi
