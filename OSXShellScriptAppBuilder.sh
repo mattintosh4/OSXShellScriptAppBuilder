@@ -12,9 +12,6 @@ OSX Shell Script Application Builder (c) 2012 mattintosh4
 more info:
   https://github.com/mattintosh4/OSXShellScriptAppBuilder
 
-request module:
-  $1
-
 __EOF__
 
 echo "=> モジュールをダウンロードしています。"
