@@ -7,6 +7,6 @@ case "$1" in
 esac
 
 echo "$1"
-echo "$MODULE_PREFIX"
+echo "$LOCALE_PREFIX"
 echo "$MODULE_LOCALE"
 export MODULE_LOCALE
