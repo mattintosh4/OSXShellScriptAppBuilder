@@ -7,19 +7,16 @@
 
 cat <<__EOF__
 
-================================================================
-              OSX Shell Script Application Builder
-================================================================
-author:
-    mattintosh4
+OSX Shell Script Application Builder (c) 2012 mattintosh4
 
 more info:
-    https://github.com/mattintosh4/OSXShellScriptAppBuilder
+  https://github.com/mattintosh4/OSXShellScriptAppBuilder
 
 __EOF__
 
 echo "=> モジュールセットをダウンロードしています。"
-bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" ${FILE:=/tmp/tmp_$$}
+FILE=/tmp/tmp_$$
+bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" $FILE
 
 NAME="`awk 'NR==2' $FILE`"
 NAME="${NAME#* }"
