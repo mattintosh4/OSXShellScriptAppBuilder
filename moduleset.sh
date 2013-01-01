@@ -8,3 +8,4 @@ case "$1" in
 		MODULE="$MODULE_PREFIX/dot-file-switcher.sh";;
 	*) echo "モジュールが見つかりませんでした"; exit;;
 esac
+export MODULE
