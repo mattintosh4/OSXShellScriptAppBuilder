@@ -19,8 +19,7 @@ more info:
 __EOF__
 
 echo "=> モジュールセットをダウンロードしています。"
-. <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh)
-
+bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1"
 
 echo "=> モジュールをダウンロードしています。"
 if ! curl -o ${FILE:=/tmp/tmp_$$} "$MODULE"; then
