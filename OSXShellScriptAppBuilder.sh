@@ -14,9 +14,13 @@ more info:
 
 __EOF__
 
-echo "=> モジュールセットをダウンロードしています。"
-MODULE_FILE=/tmp/tmp_$$
-bash <(curl --progress-bar https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1" $MODULE_FILE
+echo "=> モジュールをダウンロードしています。"
+MODULE_LOCALE="https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/modules/$1.sh"
+echo $MODULE_LOCALE
+if ! curl --progress-bar -o ${MODULE_FILE:=/tmp/tmp_$$} "$MODULE_LOCALE"; then
+	echo "モジュールのダウンロードに失敗しました。モジュール名が正しいか確認して下さい。処理を中止します。"
+	exit
+fi
 
 APP_NAME="`awk 'NR==2' $MODULE_FILE`"
 APP_NAME="${APP_NAME#* }"
