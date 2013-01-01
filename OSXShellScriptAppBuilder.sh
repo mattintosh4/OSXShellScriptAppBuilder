@@ -20,6 +20,7 @@ __EOF__
 
 echo "=> モジュールセットをダウンロードしています。"
 bash <(curl https://raw.github.com/mattintosh4/OSXShellScriptAppBuilder/master/moduleset.sh) "$1"
+echo $MODULE
 
 echo "=> モジュールをダウンロードしています。"
 if ! curl -o ${FILE:=/tmp/tmp_$$} "$MODULE"; then
